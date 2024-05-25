@@ -5,7 +5,7 @@ function addPlayer() {
     if (players.length < 4) {
         if (playerName) {
             if (!players.includes(playerName)) {
-                
+
                 players.push(playerName);
                 displayPlayer(playerName);
 
@@ -23,7 +23,7 @@ function displayPlayer(playerName) {
     const removePlayerButton = $("<button>Remove Player</button>")
         .addClass("btn btn-sm btn-danger")
         .attr("id", playerId)
-        .attr("onclick", "removePlayer('" + playerId + "," + playerName + "')");
+        .attr("onclick", "removePlayer('" + playerId + "','" + playerName + "')");
 
     insertPlayerName.append(removePlayerButton);
 

@@ -10,7 +10,7 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 
-<body>
+<body onload="setQuiz()">
 
     <header>
         <h1>Big quiz game for quiz enjoyers who like quizzes with friends!</h1>
@@ -21,21 +21,8 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title text-center">Add Players (up to 4)</h4>
-                        <form id="playerForm">
-                            <div class="form-group">
-                                <label for="playerName">Player Name</label>
-                                <input type="text" class="form-control" id="playerName" placeholder="Enter player name">
-                            </div>
-                            <div class="text-center">
-                                <button type="button" class="btn btn-sm btn-danger" onclick="addPlayer()">Add
-                                    Player</button>
-                            </div>
-                        </form>
-                        <div id="playerList"></div>
-                        <div class="d-flex justify-content-center">
-                            <button class="btn btn-success" onclick="playGame()">Play Game</button>
-                        </div>
+                        <h4 class="card-title text-center">The quiz to play with friends</h4>
+                        <div id="questionBody"></div>
                     </div>
                 </div>
             </div>

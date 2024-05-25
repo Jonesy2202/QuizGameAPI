@@ -1,7 +1,23 @@
+let quizQuestions = [];
+
+function playGame(){
+    localStorage.setItem('players', JSON.stringify(players));
+    window.location.href = "quiz.html";
+}
+
 async function setQuiz() {
+    const playersString = localStorage.getItem('players');
+    players = JSON.parse(playersString);
+    console.log(players.length);
     const questionsResponse = await getQuestions();
     const questions = questionsResponse;
-    displayQuestions(questions.results);
+    storeQuestions(questions.results);
+    displayQuestions();
+}
+
+function storeQuestions(questions) {
+    for(let i in questions)
+        quizQuestions.push([i, questions [i]]);
 }
 
 //switch player
@@ -9,19 +25,18 @@ async function setQuiz() {
 //add score
 //when question all questions are done, finsih game
 
-function displayQuestions(questions) {
-    console.log(questions);
-    questions.forEach(question => {
-        document.getElementById("questions").innerHTML = question.question;
-    });
+function displayQuestions() {
+    console.log(quizQuestions);
 }
 
 async function getQuestions() {
 
     const quizUrl = 'https://opentdb.com/api.php?';
 
+    const amount = players.length * 10;
+    
     const parameters = {
-        amount: 40
+        amount: amount
     };
 
     const paramString = Object.keys(parameters)
