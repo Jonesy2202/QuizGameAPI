@@ -31,6 +31,7 @@ function storeQuestions(questions) {
 function gameSetup() {
     if (currentQuestion < quizQuestions.length) {
         const question = quizQuestions[currentQuestion][1];
+        console.table(quizQuestions[currentQuestion][1]);
         setQuestion(question);
     } else {
         finishGame();
@@ -39,15 +40,51 @@ function gameSetup() {
 
 function setQuestion(question) {
     //display question
-    console.log(question.question);
     $("#question").html(question.question);
 
+    $("#answers").empty();
+    let buttons = [];
     //display buttons
     //get question type
     //get correct answer and make button
     //get incorrect answers and make buttons
     //randomly display buttons
+    let correctButton = $("<button></button>")
+        .addClass("btn")
+        .attr("id", 1)
+        .text(question.correct_answer)
+        .on("click", () => submitAnswer(true));
+
+    buttons.push(correctButton);
+
+    if (question.type === "multiple") {
+        //add 3 buttons
+        for (let i = 0; i < question.incorrect_answers.length; i++) {
+            let wrongButton = $("<button></button>")
+                .addClass("btn")
+                .attr("id", i + 2)
+                .text(question.incorrect_answers[i])
+                .on("click", () => submitAnswer(false));
+
+            buttons.push(wrongButton);
+        }
+    } else if (question.type === "boolean") {
+        //add 1 button
+        let wrongButton = $("<button></button>")
+            .addClass("btn")
+            .attr("id", 2)
+            .text(question.incorrect_answers)
+            .on("click", () => submitAnswer(false));
+
+        buttons.push(wrongButton);
+    }
+
+    const shuffledButtons = buttons.sort(() => 0.5 - Math.random());
+    for (let button of shuffledButtons) {
+        $("#answers").append(button);
+    }
 }
+
 
 function submitAnswer(answer) {
     if (answer) {
@@ -56,16 +93,26 @@ function submitAnswer(answer) {
     } else {
         //show correct answer
     }
+    currentQuestion++;
     nextTurn();
 }
 
 function nextTurn() {
-    currentPlayer = (currentPlayer + 1) % players.length;
-    currentQuestion++;
-    setQuestion();
+    if (currentQuestion < quizQuestions.length) {
+        currentPlayer = (currentPlayer + 1) % players.length;
+        const question = quizQuestions[currentQuestion][1];
+        
+        setQuestion(question);
+    } else {
+        finishGame();
+    }
 }
 
 function finishGame() {
+    $("#question").empty().text("Game Over");
+
+    $("#answers").empty();
+
     //display leaderboard
 }
 
