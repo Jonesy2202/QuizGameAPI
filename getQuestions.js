@@ -1,6 +1,9 @@
 let quizQuestions = [];
+let currentPlayer = 0;
+let currentQuestion = 0;
+let score = [];
 
-function playGame(){
+function playGame() {
     localStorage.setItem('players', JSON.stringify(players));
     window.location.href = "quiz.html";
 }
@@ -8,25 +11,62 @@ function playGame(){
 async function setQuiz() {
     const playersString = localStorage.getItem('players');
     players = JSON.parse(playersString);
-    console.log(players.length);
+    score = new Array(players.length).fill(0);
+
     const questionsResponse = await getQuestions();
     const questions = questionsResponse;
     storeQuestions(questions.results);
-    displayQuestions();
+    gameSetup();
 }
 
 function storeQuestions(questions) {
-    for(let i in questions)
-        quizQuestions.push([i, questions [i]]);
+    for (let i in questions)
+        quizQuestions.push([i, questions[i]]);
 }
 
-//switch player
 //display new question
 //add score
 //when question all questions are done, finsih game
 
-function displayQuestions() {
-    console.log(quizQuestions);
+function gameSetup() {
+    if (currentQuestion < quizQuestions.length) {
+        const question = quizQuestions[currentQuestion][1];
+        setQuestion(question);
+    } else {
+        finishGame();
+    }
+}
+
+function setQuestion(question) {
+    //display question
+    console.log(question.question);
+    $("#question").html(question.question);
+
+    //display buttons
+    //get question type
+    //get correct answer and make button
+    //get incorrect answers and make buttons
+    //randomly display buttons
+}
+
+function submitAnswer(answer) {
+    if (answer) {
+        //do something to show correct
+        score[currentPlayer]++;
+    } else {
+        //show correct answer
+    }
+    nextTurn();
+}
+
+function nextTurn() {
+    currentPlayer = (currentPlayer + 1) % players.length;
+    currentQuestion++;
+    setQuestion();
+}
+
+function finishGame() {
+    //display leaderboard
 }
 
 async function getQuestions() {
@@ -34,7 +74,7 @@ async function getQuestions() {
     const quizUrl = 'https://opentdb.com/api.php?';
 
     const amount = players.length * 10;
-    
+
     const parameters = {
         amount: amount
     };
