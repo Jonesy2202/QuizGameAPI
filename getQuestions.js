@@ -2,6 +2,13 @@ let quizQuestions = [];
 let currentPlayer = 0;
 let currentQuestion = 0;
 let score = [];
+const questionTimer = 3000;
+const correctAnswerMessages = [
+    "Well Done!",
+    "Smashing Job!",
+    "Congratulations!",
+    "A point to you!"
+]
 
 function playGame() {
     localStorage.setItem('players', JSON.stringify(players));
@@ -9,6 +16,8 @@ function playGame() {
 }
 
 async function setQuiz() {
+    document.getElementById("leaderboard").style.display = "none";
+
     const playersString = localStorage.getItem('players');
     players = JSON.parse(playersString);
     score = new Array(players.length).fill(0);
@@ -24,10 +33,6 @@ function storeQuestions(questions) {
         quizQuestions.push([i, questions[i]]);
 }
 
-//display new question
-//add score
-//when question all questions are done, finsih game
-
 function gameSetup() {
     if (currentQuestion < quizQuestions.length) {
         const question = quizQuestions[currentQuestion][1];
@@ -39,69 +44,79 @@ function gameSetup() {
 }
 
 function setQuestion(question) {
+    console.log(score);
     //display question
     $("#question").html(question.question);
 
     $("#answers").empty();
     let buttons = [];
-    //display buttons
-    //get question type
-    //get correct answer and make button
-    //get incorrect answers and make buttons
-    //randomly display buttons
+
     let correctButton = $("<button></button>")
         .addClass("btn")
         .attr("id", 1)
         .text(question.correct_answer)
-        .on("click", () => submitAnswer(true));
+        .on("click", () => submitAnswer(true, question.correct_answer));
 
     buttons.push(correctButton);
 
     if (question.type === "multiple") {
-        //add 3 buttons
         for (let i = 0; i < question.incorrect_answers.length; i++) {
             let wrongButton = $("<button></button>")
                 .addClass("btn")
                 .attr("id", i + 2)
                 .text(question.incorrect_answers[i])
-                .on("click", () => submitAnswer(false));
+                .on("click", () => submitAnswer(false, question.correct_answer));
 
             buttons.push(wrongButton);
         }
     } else if (question.type === "boolean") {
-        //add 1 button
         let wrongButton = $("<button></button>")
             .addClass("btn")
             .attr("id", 2)
             .text(question.incorrect_answers)
-            .on("click", () => submitAnswer(false));
+            .on("click", () => submitAnswer(false, question.correct_answer));
 
         buttons.push(wrongButton);
     }
 
-    const shuffledButtons = buttons.sort(() => 0.5 - Math.random());
+    const shuffledButtons = randomiseArray(buttons);
     for (let button of shuffledButtons) {
         $("#answers").append(button);
     }
 }
 
+function randomiseArray(array) {
+    return array.sort(() => 0.5 - Math.random());
+}
 
-function submitAnswer(answer) {
+function randomNumber() {
+    return Math.floor(Math.random() * (correctAnswerMessages.length));
+}
+
+function submitAnswer(answer, correctAnswer) {
     if (answer) {
         //do something to show correct
+        $("#answers").append("<h5></h5>")
+            .text(correctAnswerMessages[randomNumber()]);
         score[currentPlayer]++;
     } else {
         //show correct answer
+        $("#answers").append("<h5></h5>")
+            .text("Correct answer: " + correctAnswer);
     }
-    currentQuestion++;
-    nextTurn();
+
+    setTimeout(function () {
+        currentQuestion++;
+        nextTurn();
+    }, questionTimer);
+
 }
 
 function nextTurn() {
     if (currentQuestion < quizQuestions.length) {
         currentPlayer = (currentPlayer + 1) % players.length;
         const question = quizQuestions[currentQuestion][1];
-        
+
         setQuestion(question);
     } else {
         finishGame();
@@ -109,11 +124,24 @@ function nextTurn() {
 }
 
 function finishGame() {
-    $("#question").empty().text("Game Over");
+    $("#question").empty().text("The quiz has finished! Lets see who won...");
 
     $("#answers").empty();
 
-    //display leaderboard
+    document.getElementById("leaderboard").style.display = "block";
+}
+
+function displayLeaderboard() {
+    const recipeTable = document.getElementById("scoreboard");
+
+    for (let i = 0; i < players.length; i++) {
+        const row = recipeTable.insertRow();
+        const playerRow = row.insertCell(0);
+        const scoreRow = row.insertCell(1);
+
+        playerRow.textContent = players[i];
+        scoreRow.textContent = score[i];
+    }
 }
 
 async function getQuestions() {
