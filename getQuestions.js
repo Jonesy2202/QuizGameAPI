@@ -7,7 +7,8 @@ const correctAnswerMessages = [
     "Well Done!",
     "Smashing Job!",
     "Congratulations!",
-    "A point to you!"
+    "A point to you!",
+    "Yippiee!"
 ]
 
 function playGame() {
