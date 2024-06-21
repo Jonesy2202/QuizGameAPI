@@ -48,7 +48,10 @@ function setQuestion(question) {
     console.log(score);
     console.log(players);
     //display question
-    $("#question").html(question.question);
+
+    let player = players[currentPlayer];
+    $("#quizHeader").html(player);
+    $("#question").html(player + "... " + question.question);
 
     $("#answers").empty();
     let buttons = [];
