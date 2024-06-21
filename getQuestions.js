@@ -46,6 +46,7 @@ function gameSetup() {
 
 function setQuestion(question) {
     console.log(score);
+    console.log(players);
     //display question
     $("#question").html(question.question);
 
@@ -130,6 +131,7 @@ function finishGame() {
     $("#answers").empty();
 
     document.getElementById("leaderboard").style.display = "block";
+    displayLeaderboard();
 }
 
 function displayLeaderboard() {
