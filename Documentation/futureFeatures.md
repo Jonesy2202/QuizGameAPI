@@ -1,0 +1,9 @@
+### Future features
+1. Replay button
+2. Ability to add new players on replay
+3. Select topic
+4. Change length of game
+
+### To-do List
+- Add more style formatting
+- Make sure all answers are displayed correctly with the correct symbols
