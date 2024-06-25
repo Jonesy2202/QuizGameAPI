@@ -20,9 +20,11 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-header">
                         <h4 class="card-title text-center">Add Players (up to 4)</h4>
-                        <form id="playerForm">
+                    </div>
+                    <div class="card-body">
+                        <div id="playerForm">
                             <div class="form-group">
                                 <label for="playerName">Player Name</label>
                                 <input type="text" class="form-control" id="playerName" placeholder="Enter player name">
@@ -31,8 +33,10 @@
                                 <button type="button" class="btn btn-sm btn-danger" onclick="addPlayer()">Add
                                     Player</button>
                             </div>
-                        </form>
+                        </div>
                         <div id="playerList"></div>
+                    </div>
+                    <div class="card-footer">
                         <div class="d-flex justify-content-center">
                             <button class="btn btn-success" onclick="playGame()">Play Game</button>
                         </div>
