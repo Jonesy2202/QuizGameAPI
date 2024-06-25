@@ -2,17 +2,19 @@ let quizQuestions = [];
 let currentPlayer = 0;
 let currentQuestion = 0;
 let score = [];
-const questionTimer = 3000;
+const questionTimer = 1000;
 const correctAnswerMessages = [
     "Well Done!",
     "Smashing Job!",
     "Congratulations!",
     "A point to you!",
     "Yippiee!"
-]
+];
 
 function playGame() {
     localStorage.setItem('players', JSON.stringify(players));
+    localStorage.setItem('gameSettings', JSON.stringify(globalParameters));
+
     window.location.href = "quiz.html";
 }
 
@@ -20,7 +22,10 @@ async function setQuiz() {
     document.getElementById("leaderboard").style.display = "none";
 
     const playersString = localStorage.getItem('players');
+    const gameSettings = localStorage.getItem('gameSettings');
+
     players = JSON.parse(playersString);
+    globalParameters = JSON.parse(gameSettings);
     score = new Array(players.length).fill(0);
 
     const questionsResponse = await getQuestions();
@@ -50,7 +55,7 @@ function setQuestion(question) {
     //display question
 
     let player = players[currentPlayer];
-    $("#quizHeader").html(player);
+
     $("#question").html(player + "... " + question.question);
 
     $("#answers").empty();
@@ -59,7 +64,7 @@ function setQuestion(question) {
     let correctButton = $("<button></button>")
         .addClass("btn")
         .attr("id", 1)
-        .text(question.correct_answer)
+        .html(question.correct_answer)
         .on("click", () => submitAnswer(true, question.correct_answer));
 
     buttons.push(correctButton);
@@ -69,7 +74,7 @@ function setQuestion(question) {
             let wrongButton = $("<button></button>")
                 .addClass("btn")
                 .attr("id", i + 2)
-                .text(question.incorrect_answers[i])
+                .html(question.incorrect_answers[i])
                 .on("click", () => submitAnswer(false, question.correct_answer));
 
             buttons.push(wrongButton);
@@ -102,12 +107,12 @@ function submitAnswer(answer, correctAnswer) {
     if (answer) {
         //do something to show correct
         $("#answers").append("<h5></h5>")
-            .text(correctAnswerMessages[randomNumber()]);
+            .html(correctAnswerMessages[randomNumber()]);
         score[currentPlayer]++;
     } else {
         //show correct answer
         $("#answers").append("<h5></h5>")
-            .text("Correct answer: " + correctAnswer);
+            .html("Correct answer: " + correctAnswer);
     }
 
     setTimeout(function () {
@@ -155,9 +160,9 @@ async function getQuestions() {
     const quizUrl = 'https://opentdb.com/api.php?';
 
     const amount = players.length * 10;
-
     const parameters = {
-        amount: amount
+    amount: amount,
+    ...globalParameters
     };
 
     const paramString = Object.keys(parameters)
