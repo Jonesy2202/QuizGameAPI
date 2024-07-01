@@ -7,3 +7,20 @@
     width: 20%;
     text-align: center;
 }
+
+.block {
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 28px;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .block:hover {
+    background-color: #ddd;
+    color: black;
+  }

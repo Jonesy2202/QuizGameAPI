@@ -15,7 +15,11 @@ function playGame() {
     localStorage.setItem('players', JSON.stringify(players));
     localStorage.setItem('gameSettings', JSON.stringify(quizParameters));
 
+    if(players.length > 0){
     window.location.href = "quiz.html";
+    }else{
+        alert("Please add a player!");
+    }
 }
 
 async function setQuiz() {
@@ -60,18 +64,17 @@ function setQuestion(question) {
     $("#answers").empty();
     let buttons = [];
 
-    let correctButton = $("<button></button>")
-        .addClass("btn")
+    let correctButton = $("<button></button><br>")
+        .addClass("block")
         .attr("id", 1)
         .html(question.correct_answer)
         .on("click", () => submitAnswer(true, question.correct_answer));
-
     buttons.push(correctButton);
 
     if (question.type === "multiple") {
         for (let i = 0; i < question.incorrect_answers.length; i++) {
-            let wrongButton = $("<button></button>")
-                .addClass("btn")
+            let wrongButton = $("<button></button><br>")
+                .addClass("block")
                 .attr("id", i + 2)
                 .html(question.incorrect_answers[i])
                 .on("click", () => submitAnswer(false, question.correct_answer));
@@ -80,7 +83,7 @@ function setQuestion(question) {
         }
     } else if (question.type === "boolean") {
         let wrongButton = $("<button></button>")
-            .addClass("btn")
+            .addClass("block")
             .attr("id", 2)
             .text(question.incorrect_answers)
             .on("click", () => submitAnswer(false, question.correct_answer));
