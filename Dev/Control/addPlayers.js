@@ -1,5 +1,4 @@
 let players = [];
-let globalParameters = {};
 
 function addPlayer() {
     const playerName = $("#playerName").val();

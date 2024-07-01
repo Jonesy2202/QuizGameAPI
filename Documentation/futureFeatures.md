@@ -7,4 +7,3 @@
 
 ### To-do List
 - Add more style formatting
-- Make sure all answers are displayed correctly with the correct symbols

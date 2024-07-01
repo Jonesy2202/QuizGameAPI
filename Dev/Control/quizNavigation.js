@@ -12,3 +12,4 @@ function displaySettingsTab() {
     document.getElementById("gameSettingsTab").classList.add("active");
     document.getElementById("addPlayersTab").classList.remove("active");
 }
+

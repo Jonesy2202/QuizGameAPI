@@ -13,7 +13,7 @@ const correctAnswerMessages = [
 
 function playGame() {
     localStorage.setItem('players', JSON.stringify(players));
-    localStorage.setItem('gameSettings', JSON.stringify(globalParameters));
+    localStorage.setItem('gameSettings', JSON.stringify(quizParameters));
 
     window.location.href = "quiz.html";
 }
@@ -25,8 +25,10 @@ async function setQuiz() {
     const gameSettings = localStorage.getItem('gameSettings');
 
     players = JSON.parse(playersString);
-    globalParameters = JSON.parse(gameSettings);
+    quizParameters = JSON.parse(gameSettings);
     score = new Array(players.length).fill(0);
+
+    console.log(players);
 
     const questionsResponse = await getQuestions();
     const questions = questionsResponse;
@@ -50,9 +52,6 @@ function gameSetup() {
 }
 
 function setQuestion(question) {
-    console.log(score);
-    console.log(players);
-    //display question
 
     let player = players[currentPlayer];
 
@@ -162,7 +161,7 @@ async function getQuestions() {
     const amount = players.length * 10;
     const parameters = {
     amount: amount,
-    ...globalParameters
+    ...quizParameters
     };
 
     const paramString = Object.keys(parameters)
