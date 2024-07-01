@@ -2,7 +2,7 @@ let quizQuestions = [];
 let currentPlayer = 0;
 let currentQuestion = 0;
 let score = [];
-const questionTimer = 1000;
+const questionTimer = 2000;
 const correctAnswerMessages = [
     "Well Done!",
     "Smashing Job!",
