@@ -1,26 +1,49 @@
 .slider-labels {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .slider-labels span {
-    width: 20%;
-    text-align: center;
+  width: 20%;
+  text-align: center;
 }
 
 .block {
-    display: block;
-    width: 100%;
-    border: none;
-    background-color: #04AA6D;
-    color: white;
-    padding: 14px 28px;
-    font-size: 20px;
-    cursor: pointer;
-    text-align: center;
-  }
-  
-  .block:hover {
-    background-color: #ddd;
-    color: black;
-  }
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 28px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.block:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+#playerList {
+  margin-top: 20px;
+}
+
+.player-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.player-name {
+  font-size: 16px;
+  margin: 0;
+}
+
+.remove-button {
+  margin-left: 20px;
+}

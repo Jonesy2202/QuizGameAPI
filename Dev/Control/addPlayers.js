@@ -17,17 +17,21 @@ function addPlayer() {
 function displayPlayer(playerName) {
     const playerId = playerName.replace(/\s+/g, '-').toLowerCase();
 
+    const playerItem = $("<div></div>")
+        .addClass("player-item");
+
     const insertPlayerName = $("<p></p>")
-        .text(playerName);
+        .text(playerName)
+        .addClass("player-name");
 
     const removePlayerButton = $("<button>Remove Player</button>")
-        .addClass("btn btn-sm btn-danger")
+        .addClass("btn btn-sm btn-danger remove-button")
         .attr("id", playerId)
         .attr("onclick", "removePlayer('" + playerId + "','" + playerName + "')");
 
-    insertPlayerName.append(removePlayerButton);
+    playerItem.append(insertPlayerName, removePlayerButton);
 
-    $("#playerList").append(insertPlayerName);
+    $("#playerList").append(playerItem);
 }
 
 function removePlayer(playerId, playerName) {

@@ -11,6 +11,8 @@ const correctAnswerMessages = [
     "Yippiee!"
 ];
 
+const questionAmount = 10;
+
 function playGame() {
     localStorage.setItem('players', JSON.stringify(players));
     localStorage.setItem('gameSettings', JSON.stringify(quizParameters));
@@ -145,10 +147,11 @@ function finishGame() {
 }
 
 function displayLeaderboard() {
-    const recipeTable = document.getElementById("scoreboard");
+    const scoreboardTable = document.getElementById("scoreboard").getElementsByTagName('tbody')[0];
+    scoreboardTable.innerHTML = "";
 
     for (let i = 0; i < players.length; i++) {
-        const row = recipeTable.insertRow();
+        const row = scoreboardTable.insertRow();
         const playerRow = row.insertCell(0);
         const scoreRow = row.insertCell(1);
 
@@ -161,7 +164,7 @@ async function getQuestions() {
 
     const quizUrl = 'https://opentdb.com/api.php?';
 
-    const amount = players.length * 10;
+    const amount = players.length * questionAmount;
     const parameters = {
     amount: amount,
     ...quizParameters
