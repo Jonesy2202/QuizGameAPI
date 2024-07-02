@@ -84,7 +84,7 @@ function setQuestion(question) {
             buttons.push(wrongButton);
         }
     } else if (question.type === "boolean") {
-        let wrongButton = $("<button></button>")
+        let wrongButton = $("<button></button><br>")
             .addClass("block")
             .attr("id", 2)
             .text(question.incorrect_answers)
