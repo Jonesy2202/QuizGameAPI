@@ -49,25 +49,70 @@
 }
 
 header {
-  background-color: lightblue;
+  background-color: rgba(173, 216, 230, 0.345);
   padding: 15px;
-  margin-bottom: 10px;
 }
 
 footer {
-  background-color: lightblue;
+  background-color: rgba(173, 216, 230, 0.345);
   padding: 15px;
   margin-top: 10px
 }
 
 .card-header {
-  background-color: lightblue;
+  background-color: #DAF0F8;
 }
 
 .card-footer {
-  background-color: lightblue;
+  background-color: #DAF0F8;
 }
 
 .card {
   border-color: black;
+}
+
+/* Nav bar */
+
+nav {
+  background-color: hsl(198, 14%, 15%);
+  color: #FFFFFF;
+  border: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.navbar {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.navbar a {
+  float: left;
+  color: #FFFFFF;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar-expand-lg {
+  padding-top: -15px;
+}
+
+.navbar a:hover {
+  background-color: #add8e6;
+  color: #FFFFFF;
+}
+
+.navbar a.active {
+  background-color: lightblue;
+  color: #17252A;
+}
+
+.navbar-toggler {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.navdiv {
+  padding-bottom: 20px;
 }
