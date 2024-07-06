@@ -1,3 +1,7 @@
+/* * {
+  border: 1px dotted red;
+} */
+
 .slider-labels {
   display: flex;
   justify-content: space-between;
@@ -12,7 +16,7 @@
   display: block;
   width: 100%;
   border: none;
-  background-color: orange;
+  background-color: lightblue;
   color: black;
   padding: 14px 28px;
   font-size: 20px;
@@ -49,13 +53,22 @@
 }
 
 header {
-  padding: 15px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  background-color: hsl(198, 14%, 15%);
+  display: flex;
+  justify-content: space-between;
+}
+
+h1 {
+  padding-left: 20px
 }
 
 footer {
   background-color: hsl(198, 14%, 15%);
   padding: 15px;
-  margin-top: 10px;
+  margin-top: 15px;
   color: white;
 }
 
@@ -79,17 +92,19 @@ nav {
   border: 0;
   margin: 0;
   overflow: hidden;
+  float: right;
 }
 
 .navbar {
   padding-top: 0;
   padding-bottom: 0;
+  padding-right: 20px;
 }
 
 .navbar a {
   float: left;
-  color: #FFFFFF;
-  padding: 14px 16px;
+  color: white;
+  padding: 15px 17px;
   text-decoration: none;
   font-size: 17px;
 }
@@ -113,16 +128,12 @@ nav {
   padding-bottom: 10px;
 }
 
-.navdiv {
-  padding-bottom: 20px;
-}
-
 body {
-  background-image: linear-gradient(to bottom right, lightblue, rgb(254, 214, 139));
+  background-image: linear-gradient(to bottom right, lightblue, rgb(255, 166, 0));
 }
 
 .header {
-  text-shadow: 2px 2px white;
+  color: white;
 }
 
 .nav-link {
