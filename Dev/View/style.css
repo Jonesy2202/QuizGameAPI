@@ -12,7 +12,7 @@
   display: block;
   width: 100%;
   border: none;
-  background-color: rgb(173, 230, 181);
+  background-color: orange;
   color: black;
   padding: 14px 28px;
   font-size: 20px;
@@ -49,26 +49,26 @@
 }
 
 header {
-  background-color: rgba(173, 216, 230, 0.345);
   padding: 15px;
 }
 
 footer {
-  background-color: rgba(173, 216, 230, 0.345);
+  background-color: hsl(198, 14%, 15%);
   padding: 15px;
-  margin-top: 10px
+  margin-top: 10px;
+  color: white;
 }
 
 .card-header {
-  background-color: #DAF0F8;
+  background-color: hsl(198, 14%, 15%);
 }
 
 .card-footer {
-  background-color: #DAF0F8;
+  background-color: hsl(198, 14%, 15%);
 }
 
 .card {
-  border-color: black;
+  border-color: hsl(198, 14%, 15%);
 }
 
 /* Nav bar */
@@ -99,12 +99,12 @@ nav {
 }
 
 .navbar a:hover {
-  background-color: #add8e6;
+  background-color: orange;
   color: #FFFFFF;
 }
 
 .navbar a.active {
-  background-color: lightblue;
+  background-color: orange;
   color: #17252A;
 }
 
@@ -115,4 +115,28 @@ nav {
 
 .navdiv {
   padding-bottom: 20px;
+}
+
+body {
+  background-image: linear-gradient(to bottom right, lightblue, rgb(254, 214, 139));
+}
+
+.header {
+  text-shadow: 2px 2px white;
+}
+
+.nav-link {
+  color: white;
+}
+
+#question {
+  color: white;
+}
+
+.addButton {
+  background-color: lightblue;
+}
+
+#playGame {
+  background-color: lightblue;
 }
