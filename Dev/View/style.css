@@ -12,8 +12,8 @@
   display: block;
   width: 100%;
   border: none;
-  background-color: #04AA6D;
-  color: white;
+  background-color: rgb(173, 230, 181);
+  color: black;
   padding: 14px 28px;
   font-size: 20px;
   cursor: pointer;
@@ -33,7 +33,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f8f9fa;
+  background-color: rgba(173, 216, 230, 0.523);
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -46,4 +46,28 @@
 
 .remove-button {
   margin-left: 20px;
+}
+
+header {
+  background-color: lightblue;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+footer {
+  background-color: lightblue;
+  padding: 15px;
+  margin-top: 10px
+}
+
+.card-header {
+  background-color: lightblue;
+}
+
+.card-footer {
+  background-color: lightblue;
+}
+
+.card {
+  border-color: black;
 }
