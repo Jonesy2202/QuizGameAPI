@@ -13,3 +13,17 @@ function displaySettingsTab() {
     document.getElementById("addPlayersTab").classList.remove("active");
 }
 
+function displayHowToPlay() {
+    document.getElementById("help").style.display = "none";
+    document.getElementById("howToPlay").style.display = "block";
+    document.getElementById("howToPlayTab").classList.add("active");
+    document.getElementById("helpTab").classList.remove("active");
+}
+
+function displayHelp() {
+    document.getElementById("help").style.display = "block";
+    document.getElementById("howToPlay").style.display = "none";
+    document.getElementById("helpTab").classList.add("active");
+    document.getElementById("howToPlayTab").classList.remove("active");
+}
+
