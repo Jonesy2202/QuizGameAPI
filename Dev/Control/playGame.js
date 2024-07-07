@@ -111,12 +111,13 @@ function submitAnswer(answer, correctAnswer) {
     if (answer) {
         //do something to show correct
         $("#answers").append("<h5></h5>")
-            .html(correctAnswerMessages[randomNumber()]);
+            .html(correctAnswerMessages[randomNumber()])
         score[currentPlayer]++;
     } else {
         //show correct answer
         $("#answers").append("<h5></h5>")
-            .html("Correct answer: " + correctAnswer);
+            .html("Correct answer: " + correctAnswer)
+            .addClass("qAnswer");
     }
 
     setTimeout(function () {
