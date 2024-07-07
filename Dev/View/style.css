@@ -2,6 +2,8 @@
   border: 1px dotted red;
 } */
 
+/* Add player rows */
+
 .slider-labels {
   display: flex;
   justify-content: space-between;
@@ -48,9 +50,21 @@
   margin: 0;
 }
 
+/* buttons */
+
 .remove-button {
   margin-left: 20px;
 }
+
+.addButton {
+  background-color: lightblue;
+}
+
+#playGame {
+  background-color: lightblue;
+}
+
+/* backgrounds, headers and footers */
 
 header {
   margin-top: 30px;
@@ -61,16 +75,32 @@ header {
   justify-content: space-between;
 }
 
-h1 {
-  padding-left: 20px
-}
-
 footer {
   background-color: hsl(198, 14%, 15%);
   padding: 15px;
   margin-top: 15px;
   color: white;
 }
+
+body {
+  background-image: linear-gradient(to bottom right, lightblue, rgb(255, 166, 0));
+}
+
+.header {
+  color: white;
+}
+
+/* text */
+
+h1 {
+  padding-left: 20px
+}
+
+#question {
+  color: white;
+}
+
+/* cards */
 
 .card-header {
   background-color: hsl(198, 14%, 15%);
@@ -128,26 +158,6 @@ nav {
   padding-bottom: 10px;
 }
 
-body {
-  background-image: linear-gradient(to bottom right, lightblue, rgb(255, 166, 0));
-}
-
-.header {
-  color: white;
-}
-
 .nav-link {
   color: white;
-}
-
-#question {
-  color: white;
-}
-
-.addButton {
-  background-color: lightblue;
-}
-
-#playGame {
-  background-color: lightblue;
 }
