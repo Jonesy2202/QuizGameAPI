@@ -65,16 +65,25 @@
   background-color: lightblue;
 }
 
+.addButton:hover {
+  background-color: rgb(107, 177, 201);
+}
+
 #playGame {
   background-color: lightblue;
+}
+
+#playGame:hover {
+  background-color: rgb(107, 177, 201);
 }
 
 /* backgrounds, headers and footers */
 
 header {
-  margin-top: 30px;
+  margin-top: 20px;
   margin-bottom: 20px;
   padding-top: 20px;
+  padding-bottom:15px;
   background-color: hsl(198, 14%, 15%);
   display: flex;
   justify-content: space-between;
@@ -165,13 +174,15 @@ nav {
 }
 
 .navbar a:hover {
-  background-color: orange;
+  background-color: rgba(255, 166, 0, 0.689);
   color: #FFFFFF;
+  border-radius: 7px;
 }
 
 .navbar a.active {
-  background-color: orange;
+  background-color: rgba(255, 166, 0, 0.689);
   color: #17252A;
+  border-radius: 7px;
 }
 
 .navbar-toggler {

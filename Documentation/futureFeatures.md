@@ -8,3 +8,4 @@
 - Quit quiz button
 - Home page maybe
 - Remove blue text on help page and game setup tabs
+- Add message to say settings have been changed
