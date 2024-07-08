@@ -1,3 +1,7 @@
+/* imports */
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap');
+
 /* * {
   border: 1px dotted red;
 } */
@@ -94,8 +98,17 @@ body {
 
 /* text */
 
+* {
+  font-family: "Playpen Sans", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
 h1 {
-  padding-left: 20px
+  padding-left: 20px;
+  font-family: "Gloria Hallelujah", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 
 #question {
