@@ -138,7 +138,7 @@ h1 {
   border-color: hsl(198, 14%, 15%);
 }
 
-.qAnswer {
+#answers {
   color: black;
   font-size: 30px;
   text-align: center;
