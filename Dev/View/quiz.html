@@ -46,7 +46,7 @@
                             <div id="answers"></div>
                             <div id="leaderboard">
                                 <table id="scoreboard" class="table">
-                                    <thead class="table-success">
+                                    <thead class="table-info">
                                         <tr>
                                             <th>Player</th>
                                             <th>Score</th>
@@ -55,6 +55,12 @@
                                     <tbody></tbody>
                                 </table>
                             </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class="btn addButton" onclick="quitQuiz()">Quit</button>
+                            <button type="button" class="btn addButton" onclick="replayQuiz()">Replay</button>
                         </div>
                     </div>
                 </div>
@@ -77,6 +83,7 @@ new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_el
     </footer>
     <script src="../Control/playGame.js"></script>
     <script src="../Control/addPlayers.js"></script>
+    <script src="../Control/quizNavigation.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 

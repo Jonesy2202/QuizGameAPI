@@ -11,15 +11,15 @@ const correctAnswerMessages = [
     "Yippiee!"
 ];
 
-const questionAmount = 10;
+const questionAmount = 3;
 
 function playGame() {
     localStorage.setItem('players', JSON.stringify(players));
     localStorage.setItem('gameSettings', JSON.stringify(quizParameters));
 
-    if(players.length > 0){
-    window.location.href = "quiz.html";
-    }else{
+    if (players.length > 0) {
+        window.location.href = "quiz.html";
+    } else {
         alert("Please add a player!");
     }
 }
@@ -34,12 +34,16 @@ async function setQuiz() {
     quizParameters = JSON.parse(gameSettings);
     score = new Array(players.length).fill(0);
 
-    console.log(players);
-
     const questionsResponse = await getQuestions();
     const questions = questionsResponse;
     storeQuestions(questions.results);
     gameSetup();
+}
+
+function replayQuiz() {
+    quizQuestions = [];
+    currentQuestion = 0;
+    setQuiz();
 }
 
 function storeQuestions(questions) {
@@ -50,7 +54,6 @@ function storeQuestions(questions) {
 function gameSetup() {
     if (currentQuestion < quizQuestions.length) {
         const question = quizQuestions[currentQuestion][1];
-        console.table(quizQuestions[currentQuestion][1]);
         setQuestion(question);
     } else {
         finishGame();
@@ -58,12 +61,11 @@ function gameSetup() {
 }
 
 function setQuestion(question) {
-
     let player = players[currentPlayer];
 
     $("#question").html(player + "... " + question.question);
-
     $("#answers").empty();
+
     let buttons = [];
 
     let correctButton = $("<button></button><br>")
@@ -167,8 +169,8 @@ async function getQuestions() {
 
     const amount = players.length * questionAmount;
     const parameters = {
-    amount: amount,
-    ...quizParameters
+        amount: amount,
+        ...quizParameters
     };
 
     const paramString = Object.keys(parameters)

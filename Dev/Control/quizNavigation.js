@@ -27,3 +27,7 @@ function displayHelp() {
     document.getElementById("howToPlayTab").classList.remove("active");
 }
 
+function quitQuiz() {
+    window.location.href = "index.html";
+}
+

@@ -3,7 +3,6 @@
 - Ability to add new players on replay
 
 ### To-do List
-- Add more style formatting
 - Add replay button
 - Quit quiz button
 - Home page maybe
