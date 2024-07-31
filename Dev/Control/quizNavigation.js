@@ -4,6 +4,7 @@ function displayPlayersTab() {
     document.getElementById("playerForm").style.display = "block";
     document.getElementById("addPlayersTab").classList.add("active");
     document.getElementById("gameSettingsTab").classList.remove("active");
+    document.getElementById("confirmSettings").style.display = "none";
 }
 
 function displaySettingsTab() {

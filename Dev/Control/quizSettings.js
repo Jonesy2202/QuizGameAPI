@@ -16,6 +16,6 @@ function quizSettings() {
 
         quizParameters.category = category;
 
-        console.log(quizParameters.category);
-        console.log(quizParameters.difficulty);
+        document.getElementById("confirmSettings").style.display = "block";
+        document.getElementById("confirmSettings").innerHTML = "Settings have been changed.";
 }
